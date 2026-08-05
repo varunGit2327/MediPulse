@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563EB">
+<title>Smart Reminders — MediPulse</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/themes.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/reminders.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" data-sidebar>
+    <a href="dashboard.html" class="nav-logo sidebar-logo">
+      <span class="logo-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+      MediPulse
+    </a>
+    <nav class="sidebar-nav" aria-label="Primary">
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <div class="sidebar-group-label">Medicines</div>
+      <a href="medicines.html" class="sidebar-link"><i class="fa-solid fa-pills"></i> Medicine Manager</a>
+      <a href="reminders.html" class="sidebar-link active"><i class="fa-solid fa-bell"></i> Smart Reminders</a>
+      <div class="sidebar-group-label">Health</div>
+      <a href="health.html" class="sidebar-link"><i class="fa-solid fa-heart-pulse"></i> Health Tracker</a>
+      <div class="sidebar-group-label">Planning</div>
+      <a href="calendar.html" class="sidebar-link"><i class="fa-solid fa-calendar-days"></i> Calendar</a>
+      <a href="appointments.html" class="sidebar-link"><i class="fa-solid fa-stethoscope"></i> Appointments</a>
+      <div class="sidebar-group-label">Insights</div>
+      <a href="analytics.html" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+      <a href="reports.html" class="sidebar-link"><i class="fa-solid fa-file-lines"></i> Reports</a>
+      <div class="sidebar-group-label">People</div>
+      <a href="family.html" class="sidebar-link"><i class="fa-solid fa-people-roof"></i> Family Profiles</a>
+      <a href="profile.html" class="sidebar-link"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="emergency.html" class="sidebar-link"><i class="fa-solid fa-truck-medical"></i> Emergency</a>
+    </nav>
+    <a href="settings.html" class="sidebar-link sidebar-settings-link"><i class="fa-solid fa-gear"></i> Settings</a>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="btn-icon btn-ghost sidebar-toggle" data-sidebar-toggle aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-search glass"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input type="text" placeholder="Search medicines, doctors, reports…" aria-label="Search"></div>
+      <div class="topbar-actions">
+        <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i></button>
+        <button class="btn btn-icon btn-ghost" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+        <button class="profile-avatar-btn" aria-label="Switch profile"><span class="avatar-circle" data-active-avatar>Y</span></button>
+      </div>
+    </header>
+
+    <main class="app-content" id="main-content">
+      <div class="page-head">
+        <div>
+          <h1 style="font-size:var(--fs-2xl);">Smart Reminders</h1>
+          <p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Your full reminder schedule — take, skip, or snooze every dose, and track catch-up history.</p>
+        </div>
+      </div>
+
+      <div class="dash-grid" style="margin-bottom:var(--space-6);">
+        <div class="dash-card glass">
+          <div class="dash-card-label"><i class="fa-solid fa-check-double"></i> Today's Adherence</div>
+          <div class="dash-card-value" id="stat-adherence">100%</div>
+        </div>
+        <div class="dash-card glass">
+          <div class="dash-card-label"><i class="fa-solid fa-triangle-exclamation"></i> Missed This Week</div>
+          <div class="dash-card-value" id="stat-missed">0</div>
+        </div>
+        <div class="dash-card glass">
+          <div class="dash-card-label"><i class="fa-solid fa-fire"></i> Current Streak</div>
+          <div class="dash-card-value" id="stat-streak">0 days</div>
+        </div>
+      </div>
+
+      <div class="reminder-tabs" role="tablist">
+        <button class="reminder-tab active" data-tab="today" role="tab" aria-selected="true">Today</button>
+        <button class="reminder-tab" data-tab="upcoming" role="tab" aria-selected="false">Upcoming</button>
+        <button class="reminder-tab" data-tab="history" role="tab" aria-selected="false">History</button>
+      </div>
+
+      <div id="reminders-empty" class="placeholder-page" style="display:none;min-height:35vh;">
+        <div class="icon-badge"><i class="fa-solid fa-bell"></i></div>
+        <h1>Nothing here</h1>
+        <p>Add a medicine with reminder times to see your schedule.</p>
+        <a href="medicines.html" class="btn btn-primary">Go to Medicine Manager</a>
+      </div>
+
+      <div id="reminders-list"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/core/store.js"></script>
+<script src="../js/core/eventBus.js"></script>
+<script src="../js/core/seedData.js"></script>
+<script src="../js/app-shell.js"></script>
+<script src="../js/modules/reminders.js"></script>
+</body>
+</html>

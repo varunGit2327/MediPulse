@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563EB">
+<title>Settings — MediPulse</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/themes.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/settings.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" data-sidebar>
+    <a href="dashboard.html" class="nav-logo sidebar-logo">
+      <span class="logo-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+      MediPulse
+    </a>
+    <nav class="sidebar-nav" aria-label="Primary">
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <div class="sidebar-group-label">Medicines</div>
+      <a href="medicines.html" class="sidebar-link"><i class="fa-solid fa-pills"></i> Medicine Manager</a>
+      <a href="reminders.html" class="sidebar-link"><i class="fa-solid fa-bell"></i> Smart Reminders</a>
+      <div class="sidebar-group-label">Health</div>
+      <a href="health.html" class="sidebar-link"><i class="fa-solid fa-heart-pulse"></i> Health Tracker</a>
+      <div class="sidebar-group-label">Planning</div>
+      <a href="calendar.html" class="sidebar-link"><i class="fa-solid fa-calendar-days"></i> Calendar</a>
+      <a href="appointments.html" class="sidebar-link"><i class="fa-solid fa-stethoscope"></i> Appointments</a>
+      <div class="sidebar-group-label">Insights</div>
+      <a href="analytics.html" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+      <a href="reports.html" class="sidebar-link"><i class="fa-solid fa-file-lines"></i> Reports</a>
+      <div class="sidebar-group-label">People</div>
+      <a href="family.html" class="sidebar-link"><i class="fa-solid fa-people-roof"></i> Family Profiles</a>
+      <a href="profile.html" class="sidebar-link"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="emergency.html" class="sidebar-link"><i class="fa-solid fa-truck-medical"></i> Emergency</a>
+    </nav>
+    <a href="settings.html" class="sidebar-link sidebar-settings-link active"><i class="fa-solid fa-gear"></i> Settings</a>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="btn-icon btn-ghost sidebar-toggle" data-sidebar-toggle aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-search glass"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input type="text" placeholder="Search medicines, doctors, reports…" aria-label="Search"></div>
+      <div class="topbar-actions">
+        <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i></button>
+        <button class="btn btn-icon btn-ghost" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+        <button class="profile-avatar-btn" aria-label="Switch profile"><span class="avatar-circle" data-active-avatar>Y</span></button>
+      </div>
+    </header>
+
+    <main class="app-content" id="main-content">
+      <div class="page-head">
+        <div>
+          <h1 style="font-size:var(--fs-2xl);">Settings</h1>
+          <p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Theme, notifications, backup and restore, and accessibility preferences.</p>
+        </div>
+      </div>
+
+      <div class="dash-card glass settings-section">
+        <div class="dash-card-label"><i class="fa-solid fa-palette"></i> Appearance</div>
+        <div class="settings-row">
+          <div><b>Theme</b><span>Light or dark mode</span></div>
+          <div class="settings-btn-group" id="theme-group">
+            <button data-theme-choice="light">Light</button>
+            <button data-theme-choice="dark">Dark</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div><b>Text Size</b><span>Make everything larger and easier to read</span></div>
+          <div class="settings-btn-group" id="fontscale-group">
+            <button data-fontscale-choice="normal">Normal</button>
+            <button data-fontscale-choice="large">Large</button>
+            <button data-fontscale-choice="xlarge">Extra Large</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-card glass settings-section">
+        <div class="dash-card-label"><i class="fa-regular fa-bell"></i> Notifications</div>
+        <p class="settings-note">MediPulse runs entirely in your browser, so these control what you'd see in a future connected version — they're saved for when that's available.</p>
+        <div class="settings-row">
+          <div><b>Dose reminders</b><span>Get notified when it's time to take a medicine</span></div>
+          <label class="settings-toggle"><input type="checkbox" id="notif-doses"><span></span></label>
+        </div>
+        <div class="settings-row">
+          <div><b>Appointment reminders</b><span>Get notified before upcoming doctor visits</span></div>
+          <label class="settings-toggle"><input type="checkbox" id="notif-appointments"><span></span></label>
+        </div>
+        <div class="settings-row">
+          <div><b>Low stock alerts</b><span>Get notified when a medicine is running low</span></div>
+          <label class="settings-toggle"><input type="checkbox" id="notif-lowstock"><span></span></label>
+        </div>
+      </div>
+
+      <div class="dash-card glass settings-section">
+        <div class="dash-card-label"><i class="fa-solid fa-cloud-arrow-down"></i> Backup &amp; Restore</div>
+        <p class="settings-note">Your data lives only in this browser. Export a backup to keep it safe, or move it to another device.</p>
+        <div class="settings-row">
+          <div><b>Export all data</b><span>Downloads every profile's data as a single JSON file</span></div>
+          <button class="btn btn-ghost" data-export-backup><i class="fa-solid fa-download"></i> Export Backup</button>
+        </div>
+        <div class="settings-row">
+          <div><b>Restore from backup</b><span>Replaces current data with a previously exported file</span></div>
+          <label class="btn btn-ghost" style="cursor:pointer;">
+            <i class="fa-solid fa-upload"></i> Choose File
+            <input type="file" id="import-file" accept="application/json" style="display:none;">
+          </label>
+        </div>
+      </div>
+
+      <div class="dash-card glass settings-section danger-zone">
+        <div class="dash-card-label"><i class="fa-solid fa-triangle-exclamation"></i> Danger Zone</div>
+        <div class="settings-row">
+          <div><b>Reset all data</b><span>Permanently deletes every profile, medicine, and log from this browser</span></div>
+          <button class="btn btn-danger" data-reset-data>Reset Everything</button>
+        </div>
+      </div>
+
+      <div class="dash-card glass settings-section">
+        <div class="dash-card-label"><i class="fa-solid fa-circle-info"></i> About</div>
+        <div class="settings-about">
+          <div class="settings-about-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div>
+            <b>MediPulse</b>
+            <span>Version 1.0.0 · Your data stays on this device</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/core/store.js"></script>
+<script src="../js/core/eventBus.js"></script>
+<script src="../js/core/seedData.js"></script>
+<script src="../js/app-shell.js"></script>
+<script src="../js/modules/settings.js"></script>
+</body>
+</html>

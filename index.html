@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563EB">
+<title>MediPulse — Never Miss Your Medicine Again</title>
+<meta name="description" content="MediPulse is your smart personal health companion — medicines, vitals, hydration, sleep, and appointments, all in one calm, beautifully designed place.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/themes.css">
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<a href="#main" class="visually-hidden">Skip to content</a>
+
+<header class="nav" data-nav>
+  <div class="nav-inner glass container">
+    <a href="#top" class="nav-logo">
+      <span class="logo-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+      MediPulse
+    </a>
+    <nav class="nav-links" data-nav-links aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Toggle dark mode">
+        <i class="fa-regular fa-moon"></i>
+      </button>
+      <a href="pages/dashboard.html" class="btn btn-primary">Get Started</a>
+      <button class="btn-icon btn-ghost nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow hero-eyebrow"><i class="fa-solid fa-heart-pulse"></i> Your health, on time</span>
+        <h1>Never Miss Your <span class="gradient-text">Medicine</span> Again.</h1>
+        <p class="lede">MediPulse keeps every medicine, vital, and appointment in one calm place — for you, and everyone you look after.</p>
+        <div class="hero-actions">
+          <a href="pages/dashboard.html" class="btn btn-primary btn-lg">Get Started Free</a>
+          <a href="#how-it-works" class="btn btn-ghost btn-lg"><i class="fa-solid fa-play"></i> See how it works</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b data-counter="12000" data-suffix="+">12,000+</b><span>Doses tracked</span></div>
+          <div class="hero-stat"><b data-counter="4.9" data-suffix="★">4.9★</b><span>Average rating</span></div>
+          <div class="hero-stat"><b data-counter="98" data-suffix="%">98%</b><span>On-time doses</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="floating-pill" style="width:64px;height:24px;border-radius:999px;top:8%;left:4%;background:linear-gradient(135deg,var(--color-secondary),var(--color-primary));"></div>
+        <div class="floating-pill" style="width:44px;height:44px;border-radius:50%;bottom:16%;left:0%;background:linear-gradient(135deg,var(--color-success),var(--color-secondary));"></div>
+        <div class="floating-pill" style="width:56px;height:22px;border-radius:999px;top:14%;right:2%;background:linear-gradient(135deg,var(--color-warning),var(--color-primary));"></div>
+        <div class="floating-pill" style="width:36px;height:36px;border-radius:50%;bottom:10%;right:8%;background:linear-gradient(135deg,var(--color-primary),var(--color-secondary));"></div>
+
+        <div class="phone-mockup glass">
+          <div class="mock-card glass mock-row">
+            <span style="font-family:var(--font-ui);font-weight:600;font-size:var(--fs-sm);">Good morning, Priya</span>
+            <i class="fa-regular fa-bell" aria-hidden="true"></i>
+          </div>
+          <div class="mock-card glass" style="text-align:center;">
+            <svg class="pulse-trace" viewBox="0 0 260 24" aria-hidden="true">
+              <path d="M0 12 H90 L102 2 L114 22 L126 2 L138 12 H260" />
+            </svg>
+            <div style="font-family:var(--font-display);font-size:var(--fs-2xl);margin-top:var(--space-2);">92%</div>
+            <div style="color:var(--color-text-muted);font-size:var(--fs-xs);">Health Score · Excellent</div>
+          </div>
+          <div class="mock-card glass mock-row">
+            <span class="mock-pill-dot" style="background:linear-gradient(135deg,var(--color-primary),var(--color-secondary));"><i class="fa-solid fa-pills" aria-hidden="true"></i></span>
+            <div style="flex:1;margin-left:var(--space-3);">
+              <div style="font-family:var(--font-ui);font-size:var(--fs-sm);">Vitamin D</div>
+              <div style="color:var(--color-text-muted);font-size:var(--fs-xs);">in 42 minutes</div>
+            </div>
+            <span class="badge badge-upcoming">Next</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="var(--color-surface)" d="M0,40 C240,100 480,0 720,30 C960,60 1200,100 1440,40 L1440,100 L0,100 Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section" id="features" style="background:var(--color-surface);padding-top:0;">
+    <div class="container">
+      <div class="section-head" data-animate="up">
+        <span class="eyebrow">Everything in one place</span>
+        <h2>Built for how you actually take care of people</h2>
+        <p>Six modules that work together, not six separate apps stitched into one.</p>
+      </div>
+      <div class="feature-grid" data-animate-stagger>
+        <div class="feature-card glass">
+          <div class="feature-icon"><i class="fa-solid fa-bell" aria-hidden="true"></i></div>
+          <h3>Smart Reminders</h3>
+          <p>Reminders that adapt to before/after food, snooze, and never let a dose slip by.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon"><i class="fa-solid fa-pills" aria-hidden="true"></i></div>
+          <h3>Medicine Manager</h3>
+          <p>Track every tablet, capsule, syrup, and injection — dosage, doctor, and stock, all in one card.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></div>
+          <h3>Health Tracking</h3>
+          <p>Blood pressure, sugar, weight, sleep, and mood — logged in seconds, charted automatically.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon"><i class="fa-solid fa-people-roof" aria-hidden="true"></i></div>
+          <h3>Family Profiles</h3>
+          <p>Switch between everyone you care for without losing track of whose dose is whose.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+          <h3>Smart Analytics</h3>
+          <p>See adherence trends, streaks, and your Health Score at a glance.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon"><i class="fa-solid fa-trophy" aria-hidden="true"></i></div>
+          <h3>Achievements</h3>
+          <p>Streaks and milestones that make consistency feel like progress, not a chore.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-head" data-animate="up">
+        <span class="eyebrow">How it works</span>
+        <h2>Three steps to a routine that sticks</h2>
+      </div>
+      <div class="steps" data-animate-stagger>
+        <div class="step glass">
+          <div class="step-num">1</div>
+          <h3>Add your medicines</h3>
+          <p>Name, dosage, timing, and food instructions — takes under a minute.</p>
+        </div>
+        <div class="step glass">
+          <div class="step-num">2</div>
+          <h3>Get reminded, right on time</h3>
+          <p>A gentle notification with one tap to mark it taken, snooze, or skip.</p>
+        </div>
+        <div class="step glass">
+          <div class="step-num">3</div>
+          <h3>Watch your Health Score grow</h3>
+          <p>Every dose, glass of water, and night's sleep adds up to real progress.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--color-surface);">
+    <div class="container">
+      <div class="section-head" data-animate="up">
+        <span class="eyebrow">A closer look</span>
+        <h2>Designed to be lived in, not just opened</h2>
+      </div>
+      <div class="showcase-grid" data-animate-stagger>
+        <div class="showcase-frame glass">
+          <div class="showcase-screen">
+            <div class="mock-row"><strong style="font-family:var(--font-ui);font-size:var(--fs-sm);">Dashboard</strong><i class="fa-regular fa-bell" style="font-size:12px;" aria-hidden="true"></i></div>
+            <div class="glass" style="padding:var(--space-3);"><div style="height:8px;width:60%;background:var(--color-primary);border-radius:4px;"></div></div>
+            <div class="glass" style="padding:var(--space-3);flex:1;"></div>
+            <div class="glass" style="padding:var(--space-3);"><div style="height:8px;width:40%;background:var(--color-secondary);border-radius:4px;"></div></div>
+          </div>
+          <p class="showcase-caption">Dashboard</p>
+        </div>
+        <div class="showcase-frame glass">
+          <div class="showcase-screen">
+            <div class="mock-row"><strong style="font-family:var(--font-ui);font-size:var(--fs-sm);">Today's Timeline</strong><i class="fa-regular fa-clock" style="font-size:12px;" aria-hidden="true"></i></div>
+            <div class="glass" style="padding:var(--space-3);display:flex;justify-content:space-between;align-items:center;"><span style="font-size:11px;">08:00</span><span class="badge badge-taken">Taken</span></div>
+            <div class="glass" style="padding:var(--space-3);display:flex;justify-content:space-between;align-items:center;"><span style="font-size:11px;">14:00</span><span class="badge badge-upcoming">Next</span></div>
+            <div class="glass" style="padding:var(--space-3);flex:1;"></div>
+          </div>
+          <p class="showcase-caption">Today's Timeline</p>
+        </div>
+        <div class="showcase-frame glass">
+          <div class="showcase-screen">
+            <div class="mock-row"><strong style="font-family:var(--font-ui);font-size:var(--fs-sm);">Health Analytics</strong><i class="fa-regular fa-chart-bar" style="font-size:12px;" aria-hidden="true"></i></div>
+            <div class="glass" style="padding:var(--space-3);flex:1;display:flex;align-items:flex-end;gap:5px;">
+              <div style="width:14%;height:40%;background:var(--color-primary);border-radius:3px;"></div>
+              <div style="width:14%;height:70%;background:var(--color-secondary);border-radius:3px;"></div>
+              <div style="width:14%;height:55%;background:var(--color-primary);border-radius:3px;"></div>
+              <div style="width:14%;height:90%;background:var(--color-secondary);border-radius:3px;"></div>
+              <div style="width:14%;height:65%;background:var(--color-primary);border-radius:3px;"></div>
+            </div>
+          </div>
+          <p class="showcase-caption">Health Analytics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="stats-strip glass" style="padding:var(--space-12);" data-animate-stagger>
+        <div>
+          <div class="stat-big"><span data-counter="50000" data-suffix="+">50,000+</span></div>
+          <div class="stat-big-label">Reminders sent</div>
+        </div>
+        <div>
+          <div class="stat-big"><span data-counter="4.9" data-suffix="/5">4.9/5</span></div>
+          <div class="stat-big-label">Average rating</div>
+        </div>
+        <div>
+          <div class="stat-big"><span data-counter="98" data-suffix="%">98%</span></div>
+          <div class="stat-big-label">On-time adherence</div>
+        </div>
+        <div>
+          <div class="stat-big"><span data-counter="12" data-suffix="+">12+</span></div>
+          <div class="stat-big-label">Health metrics tracked</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reviews" style="background:var(--color-surface);">
+    <div class="container">
+      <div class="section-head" data-animate="up">
+        <span class="eyebrow">Reviews</span>
+        <h2>What early users say</h2>
+      </div>
+      <div class="testimonial-grid" data-animate-stagger>
+        <div class="testimonial-card glass">
+          <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+          <p>"I used to forget my vitamins for weeks. Now I actually look forward to seeing my streak."</p>
+          <div class="testimonial-person">
+            <img src="https://i.pravatar.cc/88?img=47" alt="" width="44" height="44">
+            <div><b>Priya S.</b><span>Final-year student</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card glass">
+          <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+          <p>"The one-tap 'taken' from the reminder is the whole reason I actually stuck with it."</p>
+          <div class="testimonial-person">
+            <img src="https://i.pravatar.cc/88?img=12" alt="" width="44" height="44">
+            <div><b>Arjun M.</b><span>Product Manager</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card glass">
+          <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+          <p>"Switching between my kids' profiles takes two seconds. That alone was worth it."</p>
+          <div class="testimonial-person">
+            <img src="https://i.pravatar.cc/88?img=32" alt="" width="44" height="44">
+            <div><b>Meera K.</b><span>Mother of two</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head" data-animate="up">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list" data-animate="up">
+        <div class="faq-item glass">
+          <button class="faq-question">Is my health data stored anywhere online?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+          <div class="faq-answer"><p>No. Everything lives in your browser's local storage on your device — nothing is uploaded to a server.</p></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Will I get reminded if my phone is locked or the tab is closed?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+          <div class="faq-answer"><p>Reminders fire reliably while MediPulse is open, including in a background tab. A fully closed browser can't get a true push notification without a server, so MediPulse shows you anything you missed the moment you reopen it.</p></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Can I track medicines for my whole family?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+          <div class="faq-answer"><p>Yes. Add a profile for anyone you care for and switch between them with one tap from the top bar.</p></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Does it work on my phone?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+          <div class="faq-answer"><p>MediPulse is fully responsive, from a small phone screen up to an ultra-wide monitor.</p></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Is this free?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+          <div class="faq-answer"><p>Yes — MediPulse is free to use, with no account required to get started.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="get-started">
+    <div class="container">
+      <div class="cta-banner glass" data-animate="up">
+        <div class="blob blob-1" style="opacity:0.15;position:absolute;z-index:-1;"></div>
+        <h2>Ready to build a routine that sticks?</h2>
+        <p style="max-width:480px;margin-inline:auto;margin-top:var(--space-3);margin-bottom:var(--space-8);">Free to start, nothing to install, and your data never leaves your browser.</p>
+        <a href="pages/dashboard.html" class="btn btn-primary btn-lg">Get Started Free</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#top" class="nav-logo" style="margin-bottom:var(--space-4);">
+          <span class="logo-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+          MediPulse
+        </a>
+        <p style="max-width:260px;">Your smart personal health companion — medicines, vitals, and habits in one place.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MediPulse. Built as a portfolio project.</span>
+      <div class="social-links">
+        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

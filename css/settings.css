@@ -1,0 +1,57 @@
+.settings-section { margin-bottom: var(--space-6); }
+.settings-note { font-size: var(--fs-sm); color: var(--color-text-muted); margin: var(--space-2) 0 var(--space-4); }
+
+.settings-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-4); padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.settings-row:last-child { border-bottom: none; }
+.settings-row > div:first-child b { font-family: var(--font-ui); font-weight: 600; font-size: var(--fs-sm); display: block; }
+.settings-row > div:first-child span { font-size: var(--fs-xs); color: var(--color-text-muted); }
+
+.settings-btn-group { display: flex; gap: var(--space-1); background: var(--color-surface-alt); border-radius: var(--radius-full); padding: 3px; flex-shrink: 0; }
+.settings-btn-group button {
+  padding: var(--space-2) var(--space-4); border-radius: var(--radius-full);
+  font-family: var(--font-ui); font-size: var(--fs-xs); font-weight: 600;
+  color: var(--color-text-muted); transition: all var(--duration-fast) var(--ease-standard);
+}
+.settings-btn-group button.active { background: var(--color-primary); color: #fff; }
+
+/* ===== Toggle switch ===== */
+.settings-toggle { position: relative; display: inline-block; width: 46px; height: 26px; flex-shrink: 0; }
+.settings-toggle input { opacity: 0; width: 0; height: 0; }
+.settings-toggle span {
+  position: absolute; inset: 0; background: var(--color-surface-alt);
+  border-radius: var(--radius-full); transition: background var(--duration-fast) var(--ease-standard); cursor: pointer;
+}
+.settings-toggle span::before {
+  content: ''; position: absolute; width: 20px; height: 20px; left: 3px; top: 3px;
+  background: #fff; border-radius: 50%; transition: transform var(--duration-fast) var(--ease-standard);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.settings-toggle input:checked + span { background: var(--color-primary); }
+.settings-toggle input:checked + span::before { transform: translateX(20px); }
+
+/* ===== Danger zone ===== */
+.danger-zone { border: 1px solid color-mix(in srgb, var(--color-danger) 30%, transparent); }
+.btn-danger {
+  background: var(--color-danger); color: #fff; padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md); font-family: var(--font-ui); font-weight: 600; font-size: var(--fs-sm);
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+.btn-danger:hover { opacity: 0.9; }
+
+/* ===== About ===== */
+.settings-about { display: flex; align-items: center; gap: var(--space-4); }
+.settings-about-logo {
+  width: 48px; height: 48px; border-radius: var(--radius-md);
+  background: var(--color-primary-100); color: var(--color-primary);
+  display: grid; place-items: center; font-size: var(--fs-lg);
+}
+.settings-about b { font-family: var(--font-ui); font-size: var(--fs-md); display: block; }
+.settings-about span { font-size: var(--fs-xs); color: var(--color-text-muted); }
+
+@media (max-width: 700px) {
+  .settings-row { flex-direction: column; align-items: flex-start; }
+}

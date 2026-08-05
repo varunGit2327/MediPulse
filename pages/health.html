@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563EB">
+<title>Health Tracker — MediPulse</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/themes.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/health.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" data-sidebar>
+    <a href="dashboard.html" class="nav-logo sidebar-logo">
+      <span class="logo-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+      MediPulse
+    </a>
+    <nav class="sidebar-nav" aria-label="Primary">
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <div class="sidebar-group-label">Medicines</div>
+      <a href="medicines.html" class="sidebar-link"><i class="fa-solid fa-pills"></i> Medicine Manager</a>
+      <a href="reminders.html" class="sidebar-link"><i class="fa-solid fa-bell"></i> Smart Reminders</a>
+      <div class="sidebar-group-label">Health</div>
+      <a href="health.html" class="sidebar-link active"><i class="fa-solid fa-heart-pulse"></i> Health Tracker</a>
+      <div class="sidebar-group-label">Planning</div>
+      <a href="calendar.html" class="sidebar-link"><i class="fa-solid fa-calendar-days"></i> Calendar</a>
+      <a href="appointments.html" class="sidebar-link"><i class="fa-solid fa-stethoscope"></i> Appointments</a>
+      <div class="sidebar-group-label">Insights</div>
+      <a href="analytics.html" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+      <a href="reports.html" class="sidebar-link"><i class="fa-solid fa-file-lines"></i> Reports</a>
+      <div class="sidebar-group-label">People</div>
+      <a href="family.html" class="sidebar-link"><i class="fa-solid fa-people-roof"></i> Family Profiles</a>
+      <a href="profile.html" class="sidebar-link"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="emergency.html" class="sidebar-link"><i class="fa-solid fa-truck-medical"></i> Emergency</a>
+    </nav>
+    <a href="settings.html" class="sidebar-link sidebar-settings-link"><i class="fa-solid fa-gear"></i> Settings</a>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="btn-icon btn-ghost sidebar-toggle" data-sidebar-toggle aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-search glass"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input type="text" placeholder="Search medicines, doctors, reports…" aria-label="Search"></div>
+      <div class="topbar-actions">
+        <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i></button>
+        <button class="btn btn-icon btn-ghost" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+        <button class="profile-avatar-btn" aria-label="Switch profile"><span class="avatar-circle" data-active-avatar>Y</span></button>
+      </div>
+    </header>
+
+    <main class="app-content" id="main-content">
+      <div class="page-head">
+        <div>
+          <h1 style="font-size:var(--fs-2xl);">Health Tracker</h1>
+          <p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Blood pressure, sugar, weight, sleep, and mood — logged in seconds.</p>
+        </div>
+        <button class="btn btn-primary" data-open-vitals><i class="fa-solid fa-plus"></i> Log Vitals</button>
+      </div>
+
+      <div class="health-grid">
+        <div class="dash-card glass health-stat" data-health-card="bp">
+          <div class="dash-card-label"><i class="fa-solid fa-heart-pulse"></i> Blood Pressure</div>
+          <div class="dash-card-value" id="stat-bp">—</div>
+          <div class="dash-card-sub" id="stat-bp-sub">No readings yet</div>
+        </div>
+        <div class="dash-card glass health-stat" data-health-card="sugar">
+          <div class="dash-card-label"><i class="fa-solid fa-droplet"></i> Blood Sugar</div>
+          <div class="dash-card-value" id="stat-sugar">—</div>
+          <div class="dash-card-sub" id="stat-sugar-sub">No readings yet</div>
+        </div>
+        <div class="dash-card glass health-stat" data-health-card="weight">
+          <div class="dash-card-label"><i class="fa-solid fa-weight-scale"></i> Weight</div>
+          <div class="dash-card-value" id="stat-weight">—</div>
+          <div class="dash-card-sub" id="stat-weight-sub">No readings yet</div>
+        </div>
+        <div class="dash-card glass health-stat" data-health-card="sleep">
+          <div class="dash-card-label"><i class="fa-solid fa-moon"></i> Last Night's Sleep</div>
+          <div class="dash-card-value" id="stat-sleep">—</div>
+          <div class="dash-card-sub" id="stat-sleep-sub">No entry yet</div>
+        </div>
+        <div class="dash-card glass health-stat" data-health-card="mood">
+          <div class="dash-card-label"><i class="fa-solid fa-face-smile"></i> Mood Today</div>
+          <div class="dash-card-value" id="stat-mood">—</div>
+          <div class="dash-card-sub" id="stat-mood-sub">Not logged yet</div>
+        </div>
+        <div class="dash-card glass health-stat">
+          <div class="dash-card-label"><i class="fa-solid fa-glass-water"></i> Water Today</div>
+          <div class="dash-card-value" id="stat-water">0 / 2500 ml</div>
+          <div class="dash-card-sub">
+            <button class="btn btn-ghost" style="padding:6px 14px;font-size:var(--fs-xs);" data-add-water="250">+250ml</button>
+            <button class="btn btn-ghost" style="padding:6px 14px;font-size:var(--fs-xs);" data-add-water="500">+500ml</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="health-disclaimer"><i class="fa-solid fa-circle-info"></i> These ranges are general reference points, not medical advice — talk to your doctor about what's right for you.</p>
+
+      <div class="dash-card glass" style="margin-top:var(--space-6);">
+        <div class="dash-card-label" style="margin-bottom:var(--space-3);"><i class="fa-regular fa-clock"></i> Recent Entries</div>
+        <div id="health-empty" class="placeholder-page" style="display:none;min-height:20vh;">
+          <div class="icon-badge"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h1 style="font-size:var(--fs-lg);">No entries yet</h1>
+          <p>Log your first vitals, sleep, or mood entry to see it here.</p>
+        </div>
+        <div id="health-timeline"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Log Vitals Modal -->
+<div class="modal-overlay" id="vitals-modal" data-modal-overlay hidden>
+  <div class="modal-card glass" role="dialog" aria-modal="true" aria-labelledby="vitals-modal-title">
+    <div class="modal-head">
+      <h2 id="vitals-modal-title">Log Vitals</h2>
+      <button class="btn-icon btn-ghost" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="vitals-type-tabs" role="tablist">
+      <button class="vitals-type-tab active" data-vitals-type="bp" type="button">Blood Pressure</button>
+      <button class="vitals-type-tab" data-vitals-type="sugar" type="button">Blood Sugar</button>
+      <button class="vitals-type-tab" data-vitals-type="weight" type="button">Weight</button>
+      <button class="vitals-type-tab" data-vitals-type="sleep" type="button">Sleep</button>
+      <button class="vitals-type-tab" data-vitals-type="mood" type="button">Mood</button>
+    </div>
+
+    <form id="vitals-form">
+      <div class="vitals-section" data-vitals-section="bp">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="v-systolic">Systolic (mmHg)</label>
+            <input type="number" id="v-systolic" min="0" placeholder="e.g. 120">
+          </div>
+          <div class="form-group">
+            <label for="v-diastolic">Diastolic (mmHg)</label>
+            <input type="number" id="v-diastolic" min="0" placeholder="e.g. 80">
+          </div>
+        </div>
+      </div>
+
+      <div class="vitals-section" data-vitals-section="sugar" hidden>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="v-sugar">Blood sugar (mg/dL)</label>
+            <input type="number" id="v-sugar" min="0" placeholder="e.g. 95">
+          </div>
+          <div class="form-group">
+            <label for="v-sugar-context">Reading type</label>
+            <select id="v-sugar-context">
+              <option value="fasting">Fasting</option>
+              <option value="postMeal">Post-meal</option>
+              <option value="random">Random</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="vitals-section" data-vitals-section="weight" hidden>
+        <div class="form-group">
+          <label for="v-weight">Weight (kg)</label>
+          <input type="number" id="v-weight" min="0" step="0.1" placeholder="e.g. 68.5">
+        </div>
+      </div>
+
+      <div class="vitals-section" data-vitals-section="sleep" hidden>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="v-sleep-hours">Hours slept</label>
+            <input type="number" id="v-sleep-hours" min="0" max="24" step="0.5" placeholder="e.g. 7.5">
+          </div>
+          <div class="form-group">
+            <label for="v-sleep-quality">Quality</label>
+            <select id="v-sleep-quality">
+              <option value="great">Great</option>
+              <option value="good">Good</option>
+              <option value="ok">Okay</option>
+              <option value="poor">Poor</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="vitals-section" data-vitals-section="mood" hidden>
+        <div class="form-group">
+          <label>How are you feeling?</label>
+          <div class="mood-picker">
+            <button type="button" class="mood-option" data-mood="great">😄<span>Great</span></button>
+            <button type="button" class="mood-option" data-mood="good">🙂<span>Good</span></button>
+            <button type="button" class="mood-option" data-mood="okay">😐<span>Okay</span></button>
+            <button type="button" class="mood-option" data-mood="low">🙁<span>Low</span></button>
+            <button type="button" class="mood-option" data-mood="awful">😞<span>Awful</span></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="v-mood-note">Note (optional)</label>
+          <input type="text" id="v-mood-note" placeholder="What's on your mind?">
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Entry</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/core/store.js"></script>
+<script src="../js/core/eventBus.js"></script>
+<script src="../js/core/seedData.js"></script>
+<script src="../js/app-shell.js"></script>
+<script src="../js/modules/health.js"></script>
+</body>
+</html>

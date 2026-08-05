@@ -1,0 +1,77 @@
+/* ===== Page head (shared pattern for feature pages) ===== */
+.page-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap;
+}
+
+/* ===== Medicine card grid ===== */
+.med-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+.med-card { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); }
+.med-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); }
+.med-icon {
+  width: 44px; height: 44px; border-radius: var(--radius-md); flex-shrink: 0;
+  background: var(--color-primary-100); color: var(--color-primary);
+  display: grid; place-items: center; font-size: var(--fs-md);
+}
+.med-card-actions { display: flex; gap: var(--space-1); }
+.med-card-actions button {
+  width: 32px; height: 32px; border-radius: var(--radius-full);
+  background: var(--color-surface-alt); display: grid; place-items: center;
+  color: var(--color-text-muted); transition: all var(--duration-fast) var(--ease-standard); flex-shrink: 0;
+}
+.med-card-actions button:hover { background: var(--color-primary-100); color: var(--color-primary); }
+.med-card-actions button[data-delete-med]:hover { background: color-mix(in srgb, var(--color-danger) 14%, transparent); color: var(--color-danger); }
+
+.med-name { font-family: var(--font-ui); font-weight: 600; font-size: var(--fs-md); }
+.med-meta { font-size: var(--fs-sm); color: var(--color-text-muted); }
+.med-times { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.med-time-chip {
+  font-size: var(--fs-xs); font-weight: 600; padding: 3px 10px; border-radius: var(--radius-full);
+  background: var(--color-surface-alt); color: var(--color-text);
+}
+
+.med-stock-row { display: flex; align-items: center; justify-content: space-between; font-size: var(--fs-xs); color: var(--color-text-muted); }
+.med-stock-bar { height: 6px; border-radius: var(--radius-full); background: var(--color-surface-alt); overflow: hidden; }
+.med-stock-bar-fill { height: 100%; border-radius: var(--radius-full); background: var(--color-success); transition: width var(--duration-base) var(--ease-standard); }
+.med-stock-bar-fill.low { background: var(--color-danger); }
+
+.med-card.low-stock { border: 1px solid color-mix(in srgb, var(--color-danger) 35%, transparent); }
+
+/* ===== Modal ===== */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--space-4);
+}
+.modal-overlay[hidden] { display: none; }
+.modal-card {
+  width: 100%; max-width: 560px; max-height: 88vh; overflow-y: auto;
+  padding: var(--space-6); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  background: var(--color-surface);
+}
+.modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+.modal-head h2 { font-size: var(--fs-lg); }
+.modal-actions { display: flex; justify-content: flex-end; gap: var(--space-3); margin-top: var(--space-4); }
+
+/* ===== Forms ===== */
+.form-row { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.form-row .form-group { flex: 1; min-width: 140px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--space-4); }
+.form-group label { font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 500; }
+.form-group input, .form-group select {
+  padding: var(--space-3); border-radius: var(--radius-md);
+  border: 1px solid var(--color-border); background: var(--color-surface-alt);
+  color: var(--color-text); font-family: var(--font-body); font-size: var(--fs-sm);
+  outline: none; transition: border-color var(--duration-fast) var(--ease-standard);
+}
+.form-group input:focus, .form-group select:focus { border-color: var(--color-primary); }
+.form-hint { font-size: var(--fs-xs); color: var(--color-text-muted); }
+
+@media (max-width: 900px) {
+  .med-grid { grid-template-columns: 1fr; }
+  .page-head { flex-direction: column; }
+}

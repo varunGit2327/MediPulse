@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563EB">
+<title>Medicine Manager — MediPulse</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/themes.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/medicines.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" data-sidebar>
+    <a href="dashboard.html" class="nav-logo sidebar-logo">
+      <span class="logo-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+      MediPulse
+    </a>
+    <nav class="sidebar-nav" aria-label="Primary">
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <div class="sidebar-group-label">Medicines</div>
+      <a href="medicines.html" class="sidebar-link active"><i class="fa-solid fa-pills"></i> Medicine Manager</a>
+      <a href="reminders.html" class="sidebar-link"><i class="fa-solid fa-bell"></i> Smart Reminders</a>
+      <div class="sidebar-group-label">Health</div>
+      <a href="health.html" class="sidebar-link"><i class="fa-solid fa-heart-pulse"></i> Health Tracker</a>
+      <div class="sidebar-group-label">Planning</div>
+      <a href="calendar.html" class="sidebar-link"><i class="fa-solid fa-calendar-days"></i> Calendar</a>
+      <a href="appointments.html" class="sidebar-link"><i class="fa-solid fa-stethoscope"></i> Appointments</a>
+      <div class="sidebar-group-label">Insights</div>
+      <a href="analytics.html" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+      <a href="reports.html" class="sidebar-link"><i class="fa-solid fa-file-lines"></i> Reports</a>
+      <div class="sidebar-group-label">People</div>
+      <a href="family.html" class="sidebar-link"><i class="fa-solid fa-people-roof"></i> Family Profiles</a>
+      <a href="profile.html" class="sidebar-link"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="emergency.html" class="sidebar-link"><i class="fa-solid fa-truck-medical"></i> Emergency</a>
+    </nav>
+    <a href="settings.html" class="sidebar-link sidebar-settings-link"><i class="fa-solid fa-gear"></i> Settings</a>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="btn-icon btn-ghost sidebar-toggle" data-sidebar-toggle aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-search glass"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input type="text" placeholder="Search medicines, doctors, reports…" aria-label="Search"></div>
+      <div class="topbar-actions">
+        <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i></button>
+        <button class="btn btn-icon btn-ghost" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+        <button class="profile-avatar-btn" aria-label="Switch profile"><span class="avatar-circle" data-active-avatar>Y</span></button>
+      </div>
+    </header>
+
+    <main class="app-content" id="main-content">
+      <div class="page-head">
+        <div>
+          <h1 style="font-size:var(--fs-2xl);">Medicine Manager</h1>
+          <p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Track every tablet, capsule, syrup, and injection — with dosage, doctor, and stock levels.</p>
+        </div>
+        <button class="btn btn-primary" data-open-add><i class="fa-solid fa-plus"></i> Add Medicine</button>
+      </div>
+
+      <div class="dash-grid" style="margin-bottom:var(--space-6);">
+        <div class="dash-card glass">
+          <div class="dash-card-label"><i class="fa-solid fa-pills"></i> Total Medicines</div>
+          <div class="dash-card-value" id="stat-total">0</div>
+        </div>
+        <div class="dash-card glass">
+          <div class="dash-card-label"><i class="fa-solid fa-triangle-exclamation"></i> Low Stock</div>
+          <div class="dash-card-value" id="stat-low">0</div>
+        </div>
+        <div class="dash-card glass">
+          <div class="dash-card-label"><i class="fa-regular fa-clock"></i> Doses Today</div>
+          <div class="dash-card-value" id="stat-doses">0</div>
+        </div>
+      </div>
+
+      <div id="med-empty" class="placeholder-page" style="display:none;min-height:40vh;">
+        <div class="icon-badge"><i class="fa-solid fa-pills"></i></div>
+        <h1>No medicines yet</h1>
+        <p>Add your first medicine to start tracking doses and stock.</p>
+        <button class="btn btn-primary" data-open-add>Add Medicine</button>
+      </div>
+
+      <div class="med-grid" id="med-grid"></div>
+    </main>
+  </div>
+</div>
+
+<!-- Add / Edit Medicine Modal -->
+<div class="modal-overlay" id="med-modal" data-modal-overlay hidden>
+  <div class="modal-card glass" role="dialog" aria-modal="true" aria-labelledby="med-modal-title">
+    <div class="modal-head">
+      <h2 id="med-modal-title">Add Medicine</h2>
+      <button class="btn-icon btn-ghost" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="med-form">
+      <input type="hidden" id="med-id">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="med-name">Medicine name *</label>
+          <input type="text" id="med-name" required placeholder="e.g. Vitamin D3">
+        </div>
+        <div class="form-group">
+          <label for="med-strength">Strength</label>
+          <input type="text" id="med-strength" placeholder="e.g. 500mg">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="med-form">Form</label>
+          <select id="med-form">
+            <option>Tablet</option>
+            <option>Capsule</option>
+            <option>Syrup</option>
+            <option>Injection</option>
+            <option>Drops</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="med-dosage">Dose amount</label>
+          <input type="number" id="med-dosage" min="0" step="0.5" value="1">
+        </div>
+        <div class="form-group">
+          <label for="med-food">With food</label>
+          <select id="med-food">
+            <option value="before">Before food</option>
+            <option value="after">After food</option>
+            <option value="any">Anytime</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="med-times">Reminder times</label>
+        <input type="text" id="med-times" placeholder="e.g. 08:00, 14:00, 20:30">
+        <span class="form-hint">Comma-separated 24h times</span>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="med-frequency">Frequency</label>
+          <select id="med-frequency">
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="asNeeded">As needed</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="med-start">Start date</label>
+          <input type="date" id="med-start">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="med-total">Total quantity</label>
+          <input type="number" id="med-total" min="0" value="30">
+        </div>
+        <div class="form-group">
+          <label for="med-remaining">Remaining quantity</label>
+          <input type="number" id="med-remaining" min="0" value="30">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="med-doctor">Prescribed by</label>
+          <input type="text" id="med-doctor" placeholder="e.g. Dr. Rao">
+        </div>
+        <div class="form-group">
+          <label for="med-purpose">Purpose</label>
+          <input type="text" id="med-purpose" placeholder="e.g. Blood pressure">
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Medicine</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/core/store.js"></script>
+<script src="../js/core/eventBus.js"></script>
+<script src="../js/core/seedData.js"></script>
+<script src="../js/app-shell.js"></script>
+<script src="../js/modules/medicines.js"></script>
+</body>
+</html>

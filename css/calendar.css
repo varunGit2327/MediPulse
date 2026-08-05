@@ -1,0 +1,77 @@
+.calendar-legend { display: flex; gap: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); align-items: center; }
+.calendar-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.legend-dot.med { background: var(--color-primary); }
+.legend-dot.appt { background: var(--color-accent, #a855f7); }
+
+.calendar-nav {
+  display: flex; align-items: center; gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.calendar-nav h2 { font-family: var(--font-ui); font-size: var(--fs-lg); font-weight: 600; min-width: 160px; text-align: center; }
+
+.calendar-weekdays {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  text-align: center; font-size: var(--fs-xs); font-weight: 600;
+  color: var(--color-text-muted); margin-bottom: var(--space-2);
+}
+
+.calendar-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+}
+.calendar-day {
+  min-height: 84px; border-radius: var(--radius-md);
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  padding: var(--space-2); display: flex; flex-direction: column; gap: var(--space-1);
+  cursor: pointer; transition: all var(--duration-fast) var(--ease-standard);
+}
+.calendar-day:hover { border-color: var(--color-primary); }
+.calendar-day.other-month { opacity: 0.4; }
+.calendar-day.today { border-color: var(--color-primary); border-width: 2px; }
+.calendar-day.selected { background: var(--color-primary-100); }
+.calendar-day-num { font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 600; }
+.calendar-day-dots { display: flex; gap: 4px; flex-wrap: wrap; margin-top: auto; }
+.calendar-day-dot { width: 7px; height: 7px; border-radius: 50%; }
+.calendar-day-dot.med { background: var(--color-primary); }
+.calendar-day-dot.appt { background: var(--color-accent, #a855f7); }
+.calendar-day-count { font-size: 9px; color: var(--color-text-muted); }
+
+/* ===== Day detail list ===== */
+.cal-detail-row {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-2); border-radius: var(--radius-md);
+}
+.cal-detail-row:hover { background: var(--color-surface-alt); }
+.cal-detail-icon {
+  width: 34px; height: 34px; border-radius: var(--radius-md); flex-shrink: 0;
+  display: grid; place-items: center; font-size: var(--fs-sm);
+  background: var(--color-primary-100); color: var(--color-primary);
+}
+.cal-detail-icon.appt { background: color-mix(in srgb, var(--color-accent, #a855f7) 16%, transparent); color: var(--color-accent, #a855f7); }
+.cal-detail-info { flex: 1; min-width: 0; }
+.cal-detail-info b { font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 500; display: block; }
+.cal-detail-info span { font-size: var(--fs-xs); color: var(--color-text-muted); }
+.cal-detail-status {
+  font-size: var(--fs-xs); font-weight: 600; padding: 3px 10px; border-radius: var(--radius-full); flex-shrink: 0;
+}
+.cal-detail-status.taken { background: color-mix(in srgb, var(--color-success) 14%, transparent); color: var(--color-success); }
+.cal-detail-status.missed { background: color-mix(in srgb, var(--color-danger) 14%, transparent); color: var(--color-danger); }
+.cal-detail-status.skipped { background: var(--color-surface-alt); color: var(--color-text-muted); }
+.cal-detail-status.pending { background: var(--color-surface-alt); color: var(--color-text-muted); }
+.cal-detail-status.upcoming { background: color-mix(in srgb, var(--color-primary) 14%, transparent); color: var(--color-primary); }
+.cal-detail-status.completed { background: color-mix(in srgb, var(--color-success) 14%, transparent); color: var(--color-success); }
+.cal-detail-status.cancelled { background: color-mix(in srgb, var(--color-danger) 14%, transparent); color: var(--color-danger); }
+.cal-detail-actions { display: flex; gap: var(--space-2); flex-shrink: 0; }
+.cal-detail-actions button {
+  width: 30px; height: 30px; border-radius: var(--radius-full);
+  background: var(--color-surface-alt); display: grid; place-items: center;
+  color: var(--color-text-muted); transition: all var(--duration-fast) var(--ease-standard);
+}
+.cal-detail-actions button[data-cal-take]:hover { background: var(--color-success); color: #fff; }
+.cal-detail-actions button[data-cal-skip]:hover { background: var(--color-text-muted); color: #fff; }
+
+@media (max-width: 900px) {
+  .calendar-day { min-height: 56px; }
+  .calendar-day-num { font-size: var(--fs-xs); }
+}

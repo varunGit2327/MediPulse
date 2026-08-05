@@ -1,0 +1,98 @@
+/* ===== Modal (self-contained) ===== */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--space-4);
+}
+.modal-overlay[hidden] { display: none; }
+.modal-card {
+  width: 100%; max-width: 480px; max-height: 88vh; overflow-y: auto;
+  padding: var(--space-6); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  background: var(--color-surface);
+}
+.modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+.modal-head h2 { font-size: var(--fs-lg); }
+.modal-actions { display: flex; justify-content: flex-end; gap: var(--space-3); margin-top: var(--space-4); }
+.form-row { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.form-row .form-group { flex: 1; min-width: 140px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--space-4); }
+.form-group label { font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 500; }
+.form-group input, .form-group select {
+  padding: var(--space-3); border-radius: var(--radius-md);
+  border: 1px solid var(--color-border); background: var(--color-surface-alt);
+  color: var(--color-text); font-family: var(--font-body); font-size: var(--fs-sm);
+  outline: none; transition: border-color var(--duration-fast) var(--ease-standard);
+}
+.form-group input:focus, .form-group select:focus { border-color: var(--color-primary); }
+
+/* ===== Top grid ===== */
+.profile-top-grid {
+  display: grid; grid-template-columns: 280px 1fr; gap: var(--space-6);
+}
+@media (max-width: 900px) { .profile-top-grid { grid-template-columns: 1fr; } }
+
+.profile-identity { text-align: center; }
+.profile-avatar-lg {
+  width: 84px; height: 84px; border-radius: 50%; margin: 0 auto var(--space-3);
+  background: var(--color-primary-100); color: var(--color-primary);
+  display: grid; place-items: center; font-family: var(--font-display);
+  font-size: var(--fs-2xl); font-weight: 700;
+}
+.profile-name { font-family: var(--font-ui); font-weight: 600; font-size: var(--fs-lg); }
+.profile-relation { font-size: var(--fs-sm); color: var(--color-text-muted); }
+.profile-details-list { margin-top: var(--space-4); text-align: left; font-size: var(--fs-sm); }
+.profile-details-list div { display: flex; justify-content: space-between; padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); }
+.profile-details-list div:last-child { border-bottom: none; }
+.profile-details-list span:first-child { color: var(--color-text-muted); }
+.profile-details-list span:last-child { font-weight: 500; }
+
+/* ===== Goals ===== */
+.profile-goal-row { display: flex; align-items: center; justify-content: space-between; margin-top: var(--space-2); }
+.profile-goal-edit { display: flex; align-items: center; gap: var(--space-2); }
+.profile-goal-edit input {
+  width: 90px; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+  border: 1px solid var(--color-border); background: var(--color-surface-alt);
+  color: var(--color-text); font-size: var(--fs-sm);
+}
+.profile-goal-edit span { font-size: var(--fs-xs); color: var(--color-text-muted); }
+
+/* ===== Challenge card ===== */
+.challenge-card {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-md);
+  background: var(--color-surface-alt); margin-top: var(--space-3);
+}
+.challenge-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-md); flex-shrink: 0;
+  background: var(--color-primary-100); color: var(--color-primary);
+  display: grid; place-items: center;
+}
+.challenge-card.done .challenge-icon { background: color-mix(in srgb, var(--color-success) 16%, transparent); color: var(--color-success); }
+.challenge-info { flex: 1; min-width: 0; }
+.challenge-info b { font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 600; display: block; }
+.challenge-info span { font-size: var(--fs-xs); color: var(--color-text-muted); }
+.challenge-status { font-size: var(--fs-xs); font-weight: 600; padding: 3px 10px; border-radius: var(--radius-full); flex-shrink: 0; }
+.challenge-status.done { background: color-mix(in srgb, var(--color-success) 14%, transparent); color: var(--color-success); }
+.challenge-status.pending { background: var(--color-surface); color: var(--color-text-muted); }
+
+/* ===== Achievements ===== */
+.achievements-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+.achievement-card {
+  padding: var(--space-4); border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
+  text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-2);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+.achievement-card.unlocked { background: color-mix(in srgb, var(--color-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent); }
+.achievement-icon {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--color-surface); color: var(--color-text-muted); font-size: var(--fs-md);
+}
+.achievement-card.unlocked .achievement-icon { background: var(--color-primary); color: #fff; }
+.achievement-card.locked { opacity: 0.55; }
+.achievement-name { font-family: var(--font-ui); font-weight: 600; font-size: var(--fs-sm); }
+.achievement-desc { font-size: var(--fs-xs); color: var(--color-text-muted); }

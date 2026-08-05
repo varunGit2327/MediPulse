@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563EB">
+<title>Emergency Info — MediPulse</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/themes.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/emergency.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" data-sidebar>
+    <a href="dashboard.html" class="nav-logo sidebar-logo">
+      <span class="logo-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+      MediPulse
+    </a>
+    <nav class="sidebar-nav" aria-label="Primary">
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <div class="sidebar-group-label">Medicines</div>
+      <a href="medicines.html" class="sidebar-link"><i class="fa-solid fa-pills"></i> Medicine Manager</a>
+      <a href="reminders.html" class="sidebar-link"><i class="fa-solid fa-bell"></i> Smart Reminders</a>
+      <div class="sidebar-group-label">Health</div>
+      <a href="health.html" class="sidebar-link"><i class="fa-solid fa-heart-pulse"></i> Health Tracker</a>
+      <div class="sidebar-group-label">Planning</div>
+      <a href="calendar.html" class="sidebar-link"><i class="fa-solid fa-calendar-days"></i> Calendar</a>
+      <a href="appointments.html" class="sidebar-link"><i class="fa-solid fa-stethoscope"></i> Appointments</a>
+      <div class="sidebar-group-label">Insights</div>
+      <a href="analytics.html" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+      <a href="reports.html" class="sidebar-link"><i class="fa-solid fa-file-lines"></i> Reports</a>
+      <div class="sidebar-group-label">People</div>
+      <a href="family.html" class="sidebar-link"><i class="fa-solid fa-people-roof"></i> Family Profiles</a>
+      <a href="profile.html" class="sidebar-link"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="emergency.html" class="sidebar-link active"><i class="fa-solid fa-truck-medical"></i> Emergency</a>
+    </nav>
+    <a href="settings.html" class="sidebar-link sidebar-settings-link"><i class="fa-solid fa-gear"></i> Settings</a>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="btn-icon btn-ghost sidebar-toggle" data-sidebar-toggle aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-search glass"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input type="text" placeholder="Search medicines, doctors, reports…" aria-label="Search"></div>
+      <div class="topbar-actions">
+        <button class="btn btn-icon btn-ghost" data-theme-toggle aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i></button>
+        <button class="btn btn-icon btn-ghost" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+        <button class="profile-avatar-btn" aria-label="Switch profile"><span class="avatar-circle" data-active-avatar>Y</span></button>
+      </div>
+    </header>
+
+    <main class="app-content" id="main-content">
+      <div class="page-head no-print">
+        <div>
+          <h1 style="font-size:var(--fs-2xl);">Emergency Info</h1>
+          <p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Blood group, allergies, and emergency contacts, one tap away when it matters most.</p>
+        </div>
+        <div style="display:flex;gap:var(--space-3);">
+          <button class="btn btn-ghost" data-print-emergency><i class="fa-solid fa-print"></i> Print Card</button>
+          <button class="btn btn-primary" data-open-info><i class="fa-solid fa-pen"></i> Edit Info</button>
+        </div>
+      </div>
+
+      <div id="emergency-card" class="emergency-card glass">
+        <div class="emergency-card-header">
+          <div class="emergency-card-badge"><i class="fa-solid fa-truck-medical"></i></div>
+          <div>
+            <div class="emergency-card-name" id="ec-name">—</div>
+            <div class="emergency-card-sub">Emergency Medical Information</div>
+          </div>
+        </div>
+
+        <div class="emergency-blood">
+          <span>Blood Group</span>
+          <b id="ec-blood">—</b>
+        </div>
+
+        <div class="emergency-section">
+          <div class="emergency-section-label"><i class="fa-solid fa-triangle-exclamation"></i> Allergies</div>
+          <div class="emergency-chips allergy" id="ec-allergies"><span class="emergency-empty">None recorded</span></div>
+        </div>
+
+        <div class="emergency-section">
+          <div class="emergency-section-label"><i class="fa-solid fa-notes-medical"></i> Chronic Conditions</div>
+          <div class="emergency-chips condition" id="ec-conditions"><span class="emergency-empty">None recorded</span></div>
+        </div>
+
+        <div class="emergency-section">
+          <div class="emergency-section-label"><i class="fa-solid fa-pills"></i> Current Medicines</div>
+          <div id="ec-medicines"><span class="emergency-empty">None recorded</span></div>
+        </div>
+
+        <div class="emergency-section">
+          <div class="emergency-section-label"><i class="fa-solid fa-phone"></i> Emergency Contacts</div>
+          <div id="ec-contacts"></div>
+          <div id="ec-contacts-empty" class="emergency-empty" style="display:none;">No emergency contacts added yet.</div>
+        </div>
+      </div>
+
+      <button class="btn btn-ghost no-print" data-open-contact style="margin-top:var(--space-4);"><i class="fa-solid fa-user-plus"></i> Add Emergency Contact</button>
+    </main>
+  </div>
+</div>
+
+<!-- Edit Blood Group / Allergies / Conditions Modal -->
+<div class="modal-overlay" id="info-modal" data-modal-overlay hidden>
+  <div class="modal-card glass" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <h2>Edit Emergency Info</h2>
+      <button class="btn-icon btn-ghost" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="info-form">
+      <div class="form-group">
+        <label for="info-blood">Blood Group</label>
+        <select id="info-blood">
+          <option value="">Unknown</option>
+          <option>A+</option><option>A-</option>
+          <option>B+</option><option>B-</option>
+          <option>AB+</option><option>AB-</option>
+          <option>O+</option><option>O-</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="info-allergies">Allergies (comma-separated)</label>
+        <input type="text" id="info-allergies" placeholder="e.g. Penicillin, Peanuts">
+      </div>
+      <div class="form-group">
+        <label for="info-conditions">Chronic Conditions (comma-separated)</label>
+        <input type="text" id="info-conditions" placeholder="e.g. Diabetes, Hypertension">
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Add / Edit Contact Modal -->
+<div class="modal-overlay" id="contact-modal" data-modal-overlay hidden>
+  <div class="modal-card glass" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <h2 id="contact-modal-title">Add Emergency Contact</h2>
+      <button class="btn-icon btn-ghost" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="contact-form">
+      <input type="hidden" id="contact-id">
+      <div class="form-group">
+        <label for="contact-name">Name *</label>
+        <input type="text" id="contact-name" required placeholder="e.g. Priya Sharma">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contact-relation">Relation</label>
+          <input type="text" id="contact-relation" placeholder="e.g. Spouse">
+        </div>
+        <div class="form-group">
+          <label for="contact-phone">Phone *</label>
+          <input type="tel" id="contact-phone" required placeholder="e.g. +91 98765 43210">
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Contact</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/core/store.js"></script>
+<script src="../js/core/eventBus.js"></script>
+<script src="../js/core/seedData.js"></script>
+<script src="../js/app-shell.js"></script>
+<script src="../js/modules/emergency.js"></script>
+</body>
+</html>
